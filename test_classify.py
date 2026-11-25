@@ -83,30 +83,49 @@ def test_swish_names_never_reach_the_model():
     assert "OSCAR" not in it["text"] and it["text"] == "SWISH PRIVATE PERSON MAT", it
 
 
-def test_api_failure_is_reported_not_silent():
-    class Boom(Exception):
-        pass
+def test_competing_debits_for_one_credit_are_skipped():
+    a1 = row("c", "c-a", "Personkonto", "checking", 10, -500, "Överföring 1111")
+    a2 = row("c", "c-c", "Konto C", "checking", 10, -500, "Överföring 3333")
+    b = row("c", "c-b", "Konto B", "checking", 10, 500, "Överföring 2222")
+    assert C.pair_transfers([a1, a2, b]) == {}
 
-    def fail(*a, **k):
-        raise Boom("simulated outage")
 
-    orig, C.classify_batch, C.RETRY_SLEEP = C.classify_batch, fail, 0
-    orig_cache = C.CACHE
-    C.CACHE = "/dev/null/never"  # nothing cached, nothing written
+def run_with_fake_model(fake):
+    """predict() on one new merchant with classify_batch replaced; no network, no cache on disk."""
+    saved = (C.classify_batch, C.CACHE, C.save_cache, C.RETRY_SLEEP)
+    C.classify_batch, C.CACHE, C.save_cache, C.RETRY_SLEEP = fake, "/dev/null/never", lambda c: None, 0
     C.FAILED_ROWS.clear()
     try:
         rows = [row("c", "c-main", "Personkonto", "checking", 2, -129, "Kortköp 260501 SOME NEW SHOP")]
         train = [dict(row("t", "t-main", "Personkonto", "checking", 2, -50, "Kortköp 260501 ICA NARA"),
                       category="spend.groceries")]
-        try:
-            C.save_cache = lambda c: None
-            pred = C.predict(rows, train)
-        finally:
-            pass
-        assert pred[rows[0]["id"]] == "unknown"
-        assert C.FAILED_ROWS == [rows[0]["id"]], C.FAILED_ROWS
+        return rows[0]["id"], C.predict(rows, train)
     finally:
-        C.classify_batch, C.CACHE = orig, orig_cache
+        C.classify_batch, C.CACHE, C.save_cache, C.RETRY_SLEEP = saved
+
+
+def test_api_failure_is_reported_not_silent():
+    def fail(*a, **k):
+        raise ConnectionError("simulated outage")
+
+    rid, pred = run_with_fake_model(fail)
+    assert pred[rid] == "unknown" and C.FAILED_ROWS == [rid], C.FAILED_ROWS
+
+
+def test_incomplete_response_is_reported_not_silent():
+    rid, pred = run_with_fake_model(lambda client, system, batch: {})  # model returned no entries
+    assert pred[rid] == "unknown" and C.FAILED_ROWS == [rid], C.FAILED_ROWS
+
+
+def test_incomplete_response_is_retried():
+    calls = []
+
+    def flaky(client, system, batch):
+        calls.append(len(batch))
+        return {} if len(calls) == 1 else {0: "spend.shopping"}
+
+    rid, pred = run_with_fake_model(flaky)
+    assert pred[rid] == "spend.shopping" and C.FAILED_ROWS == [] and calls == [1, 1], (pred, calls)
 
 
 if __name__ == "__main__":

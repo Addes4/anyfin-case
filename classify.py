@@ -149,23 +149,31 @@ def pair_transfers(rows):
         types = {r["account"]: r["account_type"] for r in rs}
         cand = [r for r in rs if transferish(r, names)]
         used = set()
+
+        def options(x):
+            """Unused rows that could be x's other half, closest first."""
+            dx = date.fromisoformat(x["date"])
+            out = []
+            for y in cand:
+                if y["id"] in used or y["account"] == x["account"] or abs(amt(y) + amt(x)) > 0.005:
+                    continue
+                gap = abs((date.fromisoformat(y["date"]) - dx).days)
+                if gap <= 5:
+                    out.append((gap, y))
+            return sorted(out, key=lambda o: o[0])
+
+        def unique_nearest(opts):
+            if not opts or (len(opts) > 1 and opts[1][0] == opts[0][0]):
+                return None
+            return opts[0][1]
+
         for a in cand:
             if a["id"] in used or amt(a) >= 0:
                 continue
-            da = date.fromisoformat(a["date"])
-            options = []
-            for b in cand:
-                if b["id"] in used or b["account"] == a["account"] or abs(amt(b) + amt(a)) > 0.005:
-                    continue
-                gap = abs((date.fromisoformat(b["date"]) - da).days)
-                if gap <= 5:
-                    options.append((gap, b))
-            if not options:
+            b = unique_nearest(options(a))
+            # Pair only mutual, unique nearest matches; anything ambiguous goes to the other rules.
+            if b is None or unique_nearest(options(b)) is not a:
                 continue
-            options.sort(key=lambda x: x[0])
-            if len(options) > 1 and options[1][0] == options[0][0]:
-                continue  # ambiguous: leave both rows to the other rules
-            b = options[0][1]
             used |= {a["id"], b["id"]}
             if a["account"] in sav or b["account"] in sav:
                 res[a["id"]] = res[b["id"]] = "transfer.savings"
@@ -363,24 +371,29 @@ def llm_label(items, examples):
     failed = set()
 
     def run(bkeys):
+        """Retry a batch up to 3 times; items missing from a response count as failed and are retried too."""
+        remaining = list(bkeys)
         for attempt in range(3):
             try:
-                res = classify_batch(client, system, [todo[k] for k in bkeys])
-                break
+                res = classify_batch(client, system, [todo[k] for k in remaining])
             except (anthropic.AuthenticationError, anthropic.PermissionDeniedError,
                     anthropic.NotFoundError, anthropic.BadRequestError):
                 raise  # configuration problem: stop the whole run
             except Exception as e:
                 print(f"batch failed ({type(e).__name__}: {e}); attempt {attempt + 1}/3", file=sys.stderr)
                 time.sleep(RETRY_SLEEP * (attempt + 1))
-        else:
+                continue
             with _lock:
-                failed.update(bkeys)
-            return
+                for i, k in enumerate(remaining):
+                    if i in res:
+                        cache[k] = res[i]
+            missing = [k for i, k in enumerate(remaining) if i not in res]
+            if not missing:
+                return
+            print(f"response missing {len(missing)} of {len(remaining)} items; attempt {attempt + 1}/3", file=sys.stderr)
+            remaining = missing
         with _lock:
-            for i, k in enumerate(bkeys):
-                if i in res:  # an index the model skipped is retried next run, not cached
-                    cache[k] = res[i]
+            failed.update(remaining)
 
     if batches:
         print(f"LLM: {len(keys)} unique items in {len(batches)} batches ({MODEL})", file=sys.stderr)
