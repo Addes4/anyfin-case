@@ -1,0 +1,759 @@
+{
+  "mode": "rules_only",
+  "seed": 20261125,
+  "synthetic_only": true,
+  "overall": {
+    "rows": 876,
+    "correct": 228,
+    "wrong": 60,
+    "unknown": 588,
+    "score": 19.18,
+    "precision": 0.7917,
+    "coverage": 0.3288,
+    "expectation_match": 324
+  },
+  "by_scenario": {
+    "ambiguous_pair": {
+      "rows": 36,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 36,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 36
+    },
+    "benefit": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "capital": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "card_bill_pair": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "card_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "card_purchase_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 12,
+      "unknown": 0,
+      "score": -100.0,
+      "precision": 0.0,
+      "coverage": 1.0,
+      "expectation_match": 0
+    },
+    "cash": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "cash_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 12,
+      "unknown": 0,
+      "score": -100.0,
+      "precision": 0.0,
+      "coverage": 1.0,
+      "expectation_match": 0
+    },
+    "collections": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "collector_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 12,
+      "unknown": 0,
+      "score": -100.0,
+      "precision": 0.0,
+      "coverage": 1.0,
+      "expectation_match": 0
+    },
+    "dividend": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "invoice": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "merchant_purchase": {
+      "rows": 210,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 210,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "merchant_refund": {
+      "rows": 210,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 210,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "mortgage": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "provider_collection_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 12,
+      "unknown": 0,
+      "score": -100.0,
+      "precision": 0.0,
+      "coverage": 1.0,
+      "expectation_match": 0
+    },
+    "provider_invoice_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 12,
+      "unknown": 0,
+      "score": -100.0,
+      "precision": 0.0,
+      "coverage": 1.0,
+      "expectation_match": 0
+    },
+    "salary": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "sale": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "savings_pair": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "school": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "swish_company": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "swish_food": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_person": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_rent": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "transfer_gap_0": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "transfer_gap_5": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "transfer_gap_6": {
+      "rows": 24,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 24,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 24
+    },
+    "unknown_reference": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unknown_swish_message": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unknown_transfer": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unrelated_equal_amounts": {
+      "rows": 24,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 50.0,
+      "precision": 1.0,
+      "coverage": 0.5,
+      "expectation_match": 12
+    }
+  },
+  "errors": [
+    {
+      "id": "s000625",
+      "scenario": "card_purchase_trap",
+      "text": "kortkop 260509 visa shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000473",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000704",
+      "scenario": "cash_merchant_trap",
+      "text": "Kortköp 260509 ATM CAFE",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000513",
+      "scenario": "collector_merchant_trap",
+      "text": "Kortköp 260509 LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000477",
+      "scenario": "provider_invoice_trap",
+      "text": "Kortköp 260509 QLIRO SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000741",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000515",
+      "scenario": "provider_invoice_trap",
+      "text": "Kortköp 260509 QLIRO SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000780",
+      "scenario": "cash_merchant_trap",
+      "text": "Kortköp 260509 ATM CAFE",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000663",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000853",
+      "scenario": "card_purchase_trap",
+      "text": "kortkop 260509 visa shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000668",
+      "scenario": "provider_collection_trap",
+      "text": "paypal *lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000705",
+      "scenario": "provider_invoice_trap",
+      "text": "kortköp 260509 qliro shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000514",
+      "scenario": "cash_merchant_trap",
+      "text": "Kortköp 260509 ATM CAFE",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000629",
+      "scenario": "provider_invoice_trap",
+      "text": "kortköp 260509 qliro shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000742",
+      "scenario": "cash_merchant_trap",
+      "text": "Kortköp 260509 ATM CAFE",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000782",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000743",
+      "scenario": "provider_invoice_trap",
+      "text": "Kortköp 260509 QLIRO SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000437",
+      "scenario": "collector_merchant_trap",
+      "text": "Kortköp 260509 LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000779",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000476",
+      "scenario": "cash_merchant_trap",
+      "text": "kortköp 260509 atm cafe",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000549",
+      "scenario": "card_purchase_trap",
+      "text": "kortkop 260509 visa shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000815",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000591",
+      "scenario": "provider_invoice_trap",
+      "text": "Kortköp 260509 QLIRO SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000589",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000701",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000439",
+      "scenario": "provider_invoice_trap",
+      "text": "kortköp 260509 qliro shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000552",
+      "scenario": "cash_merchant_trap",
+      "text": "kortköp 260509 atm cafe",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000435",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000818",
+      "scenario": "cash_merchant_trap",
+      "text": "kortköp 260509 atm cafe",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000744",
+      "scenario": "provider_collection_trap",
+      "text": "paypal *lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000627",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000858",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000554",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000857",
+      "scenario": "provider_invoice_trap",
+      "text": "kortköp 260509 qliro shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000551",
+      "scenario": "collector_merchant_trap",
+      "text": "Kortköp 260509 LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000665",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000739",
+      "scenario": "card_purchase_trap",
+      "text": "kortkop 260509 visa shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000553",
+      "scenario": "provider_invoice_trap",
+      "text": "Kortköp 260509 QLIRO SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000478",
+      "scenario": "provider_collection_trap",
+      "text": "paypal *lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000475",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000592",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000820",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000855",
+      "scenario": "collector_merchant_trap",
+      "text": "Kortköp 260509 LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000590",
+      "scenario": "cash_merchant_trap",
+      "text": "kortköp 260509 atm cafe",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000856",
+      "scenario": "cash_merchant_trap",
+      "text": "kortköp 260509 atm cafe",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000587",
+      "scenario": "card_purchase_trap",
+      "text": "kortkop 260509 visa shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000667",
+      "scenario": "provider_invoice_trap",
+      "text": "Kortköp 260509 QLIRO SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000817",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000777",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000703",
+      "scenario": "collector_merchant_trap",
+      "text": "kortköp 260509 lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000516",
+      "scenario": "provider_collection_trap",
+      "text": "paypal *lowell cafe",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000438",
+      "scenario": "cash_merchant_trap",
+      "text": "kortköp 260509 atm cafe",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000630",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000440",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000706",
+      "scenario": "provider_collection_trap",
+      "text": "PAYPAL *LOWELL CAFE",
+      "expected": "spend.dining",
+      "predicted": "credit.collections"
+    },
+    {
+      "id": "s000666",
+      "scenario": "cash_merchant_trap",
+      "text": "Kortköp 260509 ATM CAFE",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000781",
+      "scenario": "provider_invoice_trap",
+      "text": "kortköp 260509 qliro shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000628",
+      "scenario": "cash_merchant_trap",
+      "text": "Kortköp 260509 ATM CAFE",
+      "expected": "spend.dining",
+      "predicted": "transfer.cash"
+    },
+    {
+      "id": "s000511",
+      "scenario": "card_purchase_trap",
+      "text": "KORTKOP 260509 VISA SHOP",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    },
+    {
+      "id": "s000819",
+      "scenario": "provider_invoice_trap",
+      "text": "kortköp 260509 qliro shop",
+      "expected": "spend.shopping",
+      "predicted": "credit.loan"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 id,category
-v0001,unknown
+v0001,spend.groceries
 v0002,spend.health
 v0003,spend.groceries
 v0004,spend.shopping
@@ -527,7 +527,7 @@ v0525,transfer.person
 v0526,spend.groceries
 v0527,spend.leisure
 v0528,spend.transport
-v0529,unknown
+v0529,spend.groceries
 v0530,transfer.cash
 v0531,spend.housing
 v0532,spend.dining
@@ -944,7 +944,7 @@ v0942,spend.groceries
 v0943,transfer.person
 v0944,spend.dining
 v0945,spend.transport
-v0946,unknown
+v0946,spend.groceries
 v0947,spend.housing
 v0948,spend.shopping
 v0949,spend.dining

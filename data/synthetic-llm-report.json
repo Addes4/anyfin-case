@@ -1,0 +1,427 @@
+{
+  "mode": "full_pipeline",
+  "seed": 20261125,
+  "synthetic_only": true,
+  "overall": {
+    "rows": 876,
+    "correct": 744,
+    "wrong": 12,
+    "unknown": 120,
+    "score": 83.56,
+    "precision": 0.9841,
+    "coverage": 0.863,
+    "expectation_match": 828
+  },
+  "by_scenario": {
+    "ambiguous_pair": {
+      "rows": 36,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 36,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 36
+    },
+    "benefit": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "capital": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "card_bill_pair": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "card_merchant_trap": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "card_purchase_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "cash": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "cash_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "collections": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "collector_merchant_trap": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "dividend": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "invoice": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "merchant_purchase": {
+      "rows": 210,
+      "correct": 210,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 210
+    },
+    "merchant_refund": {
+      "rows": 210,
+      "correct": 210,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 210
+    },
+    "mortgage": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "provider_collection_trap": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "provider_invoice_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "salary": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "sale": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "savings_pair": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "school": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_company": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_food": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_person": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_rent": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "transfer_gap_0": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "transfer_gap_5": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "transfer_gap_6": {
+      "rows": 24,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 24,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 24
+    },
+    "unknown_reference": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unknown_swish_message": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 12,
+      "unknown": 0,
+      "score": -100.0,
+      "precision": 0.0,
+      "coverage": 1.0,
+      "expectation_match": 0
+    },
+    "unknown_transfer": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unrelated_equal_amounts": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    }
+  },
+  "errors": [
+    {
+      "id": "s000671",
+      "scenario": "unknown_swish_message",
+      "text": "Swish ANNA B tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000633",
+      "scenario": "unknown_swish_message",
+      "text": "swish anna b tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000785",
+      "scenario": "unknown_swish_message",
+      "text": "Swish ANNA B tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000481",
+      "scenario": "unknown_swish_message",
+      "text": "Swish ANNA B tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000861",
+      "scenario": "unknown_swish_message",
+      "text": "swish anna b tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000709",
+      "scenario": "unknown_swish_message",
+      "text": "Swish ANNA B tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000557",
+      "scenario": "unknown_swish_message",
+      "text": "swish anna b tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000519",
+      "scenario": "unknown_swish_message",
+      "text": "Swish ANNA B tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000747",
+      "scenario": "unknown_swish_message",
+      "text": "swish anna b tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000443",
+      "scenario": "unknown_swish_message",
+      "text": "Swish ANNA B tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000595",
+      "scenario": "unknown_swish_message",
+      "text": "swish anna b tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    },
+    {
+      "id": "s000823",
+      "scenario": "unknown_swish_message",
+      "text": "swish anna b tack",
+      "expected": "unknown",
+      "predicted": "transfer.person"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "model_calls": 5,
+  "estimated_cost_usd": 0.1897,
+  "cache_hits": 2
+}

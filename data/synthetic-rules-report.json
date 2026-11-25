@@ -1,0 +1,338 @@
+{
+  "mode": "rules_only",
+  "seed": 20261125,
+  "synthetic_only": true,
+  "overall": {
+    "rows": 876,
+    "correct": 228,
+    "wrong": 0,
+    "unknown": 648,
+    "score": 26.03,
+    "precision": 1.0,
+    "coverage": 0.2603,
+    "expectation_match": 324
+  },
+  "by_scenario": {
+    "ambiguous_pair": {
+      "rows": 36,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 36,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 36
+    },
+    "benefit": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "capital": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "card_bill_pair": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "card_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "card_purchase_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "cash": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "cash_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "collections": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "collector_merchant_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "dividend": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "invoice": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "merchant_purchase": {
+      "rows": 210,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 210,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "merchant_refund": {
+      "rows": 210,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 210,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "mortgage": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "provider_collection_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "provider_invoice_trap": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "salary": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "sale": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "savings_pair": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "school": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "swish_company": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 0
+    },
+    "swish_food": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_person": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "swish_rent": {
+      "rows": 12,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 12
+    },
+    "transfer_gap_0": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "transfer_gap_5": {
+      "rows": 24,
+      "correct": 24,
+      "wrong": 0,
+      "unknown": 0,
+      "score": 100.0,
+      "precision": 1.0,
+      "coverage": 1.0,
+      "expectation_match": 24
+    },
+    "transfer_gap_6": {
+      "rows": 24,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 24,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 24
+    },
+    "unknown_reference": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unknown_swish_message": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unknown_transfer": {
+      "rows": 12,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 0.0,
+      "precision": null,
+      "coverage": 0.0,
+      "expectation_match": 12
+    },
+    "unrelated_equal_amounts": {
+      "rows": 24,
+      "correct": 12,
+      "wrong": 0,
+      "unknown": 12,
+      "score": 50.0,
+      "precision": 1.0,
+      "coverage": 0.5,
+      "expectation_match": 12
+    }
+  },
+  "errors": []
+}
