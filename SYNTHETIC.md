@@ -35,7 +35,7 @@ The data is deliberately biased toward boundary cases, with repeated templates a
 
 `data/synthetic-baseline-report.json` preserves the run before the rule changes. The full pipeline used Claude Opus 5.5 with the official training examples. Its first run after the rule changes was cold (296 uncached items in five calls, about $0.19); the checked-in report is a warm rerun with the same results (0 calls). The 12 wrong rows are the "Swish … tack" policy disagreement below. The 120 abstentions are 36 ambiguous-pair rows, 24 transfers outside the five-day window, 12 unowned transfers, 12 bare references, and 36 merchant traps (card, cash and provider words inside purchases), which this suite accepts as safer than unsupported labels. Unknown never earns a correct-label point, including where the authored expectation is unknown. `expectation_match` separately counts agreement with abstention expectations.
 
-Leave-one-customer-out on the official 696 training rows still scores 100.0 on a cold run, including all 636 rows with unseen normalised text. All 29 edge-case checks in `test_classify.py` and all 8 corpus checks pass. The validation predictions in `adrian-sohrabi.csv` were regenerated with the current code.
+Leave-one-customer-out on the official 696 training rows still scores 100.0 on a cold run, including all 636 rows with unseen normalised text. All 29 edge-case checks in `test_classify.py` and all 8 corpus checks pass. The validation predictions (`adrian-sohrabi-validation.csv`) and final-set predictions (`adrian-sohrabi.csv`) come from the current code.
 
 ## Changes driven by the corpus
 
