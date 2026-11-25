@@ -12,7 +12,7 @@ Env: ANTHROPIC_API_KEY (or .env), MODEL (default claude-opus-5-5), OUT, MAX_USD 
 DEADLINE_S (default 480). Exit code 1 if any rows could not be classified because the API failed or a
 limit was reached, 2 if the input is invalid.
 """
-import argparse, csv, json, os, re, sys, hashlib, tempfile, threading, time
+import argparse, csv, json, math, os, re, sys, hashlib, tempfile, threading, time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -84,10 +84,12 @@ def read(path):
             raise ValueError(f"{path}:{n}: duplicate id {r['id']!r}")
         seen.add(r["id"])
         try:
-            float(r["amount_sek"])
+            ok = math.isfinite(float(r["amount_sek"]))
             date.fromisoformat(r["date"])
         except (TypeError, ValueError):
-            raise ValueError(f"{path}:{n}: bad amount or date in row {r['id']!r}") from None
+            ok = False
+        if not ok:
+            raise ValueError(f"{path}:{n}: bad amount or date in row {r['id']!r}")
         r["text"] = r["text"] or ""
     return rows
 
@@ -244,14 +246,10 @@ SWISH_MSG = {"HYRA": "spend.housing", "EL": "spend.housing", "ELRÄKNING": "spen
              "MATKASSE": "spend.groceries", "PIZZA": "spend.dining", "LUNCH": "spend.dining",
              "MIDDAG": "spend.dining", "FIKA": "spend.dining", "BILJETTER": "spend.leisure",
              "BILJETT": "spend.leisure", "KONSERT": "spend.leisure", "BIO": "spend.leisure"}
-MSG_WORDS = set(SWISH_MSG) | {"MAT", "MATVAROR", "PRESENT", "RESA", "TAXI", "BENSIN", "ÖL", "OL", "SKULD", "LÅN",
-                              "LAN", "TACK", "BIDRAG", "SPEL", "BARNVAKT", "STÄDNING", "INTERNET", "BREDBAND"}
-
-
 def swish_parts(text):
     """('person', message, body) | ('company', '', body) | ('unclear', '', body), or None if not Swish.
-    'FIRSTNAME X ...' is a person and the rest is the message; a counterparty with a company marker is a
-    company; anything else is a person only if it carries a known message word (the rest is dropped)."""
+    Only 'FIRSTNAME X ...' is taken as a private person, with the whole rest as the message; a counterparty
+    with a company marker is a company; anything else is unclear and goes to the model unchanged."""
     m = SWISH.match(text.strip())
     if not m:
         return None
@@ -262,8 +260,7 @@ def swish_parts(text):
         return ("company", "", body)
     if len(toks) >= 2 and len(toks[1]) == 1 and toks[1].isalpha():
         return ("person", " ".join(toks[2:]), body)
-    msg = [t for t in toks[1:] if t in MSG_WORDS]
-    return ("person", " ".join(msg), body) if msg else ("unclear", "", body)
+    return ("unclear", "", body)
 
 
 def rule(r, sav, names):
@@ -274,6 +271,7 @@ def rule(r, sav, names):
     if sw:
         kind, msg, _ = sw
         if kind == "person":
+            # Only a message that is exactly one known word; "hyra bil" or "inte hyra" go to the model.
             return SWISH_MSG.get(msg) if msg else "transfer.person"
         return None  # company or unclear counterparty -> model
     if is_purchase(r):
@@ -296,11 +294,15 @@ def rule(r, sav, names):
     if card_bill(r):
         return "credit.loan"
     if TRANSFER_TXT.search(u):
-        # Own-account only with evidence: a named own account, or an explicit savings word and nobody else named.
+        # Own-account only with evidence and nothing contradicting it: no other names in the text, and either
+        # a named own account or an explicit savings word.
+        extra = foreign_words(r, names) - {w.upper() for w in SAVE_WORD.findall(u)}
+        if extra:
+            return None
         other = mentioned_account(r, names)
         if other:
             return "transfer.savings" if other in sav or r["account"] in sav else "transfer.own"
-        if SAVE_WORD.search(u) and not (foreign_words(r, names) - {w.upper() for w in SAVE_WORD.findall(u)}):
+        if SAVE_WORD.search(u):
             return "transfer.savings"
     return None
 
@@ -320,6 +322,25 @@ def cost_usd():
     tok_in = sum(u.input_tokens + 1.25 * (u.cache_creation_input_tokens or 0)
                  + read_mult * (u.cache_read_input_tokens or 0) for u in USAGE)
     return (tok_in * pin + sum(u.output_tokens for u in USAGE) * pout) / 1e6
+
+
+_reserved = [0.0]
+
+
+def reserve(n_items):
+    """Reserve a conservative cost estimate for one call (about 2x what batches have measured), or None if
+    it would not fit in MAX_USD next to what is already spent and in flight."""
+    est = 0.03 + 0.002 * n_items
+    with _lock:
+        if cost_usd() + _reserved[0] + est > MAX_USD:
+            return None
+        _reserved[0] += est
+        return est
+
+
+def release(est):
+    with _lock:
+        _reserved[0] -= est
 
 
 def load_cache():
@@ -370,9 +391,9 @@ def clean(s):
 
 
 def item_of(r, rec, sav, names):
-    """What the model sees. Swish names in the 'FIRSTNAME X' format, unclear Swish counterparties that carry a
-    known message word, and words in bank transfers that are not the customer's own account names are
-    removed or replaced with X. Other free text (e.g. a Swish counterparty with no known message) is sent as is."""
+    """What the model sees. Swish names in the 'FIRSTNAME X' format, and words in bank transfers that are not
+    the customer's own account names, are removed or replaced with X. Everything else, including Swish
+    counterparties in other formats (which may be full names), is sent as is."""
     sw = swish_parts(r["text"])
     if sw and sw[0] == "person":
         text = f"SWISH PRIVATE PERSON {sw[1]}".strip()
@@ -380,7 +401,7 @@ def item_of(r, rec, sav, names):
         text = f"SWISH {sw[2].upper()}"
     elif TRANSFER_TXT.search(r["text"]):
         fw = foreign_words(r, names)
-        text = " ".join("X" if w in fw else w for w in norm(r["text"]).split())
+        text = WORD.sub(lambda m: "X" if m.group(0) in fw else m.group(0), norm(r["text"]))
     else:
         text = norm(r["text"])
     return {"text": clean(text), "dir": "in" if amt(r) > 0 else "out",
@@ -464,7 +485,7 @@ def parse_labels(items, n):
 def llm_label(items, examples):
     """Returns key -> category, or key -> None where the API failed (not the same as a deliberate "unknown")."""
     import anthropic
-    client = anthropic.Anthropic(max_retries=2)
+    client = anthropic.Anthropic(max_retries=0)  # retries are ours, so the deadline bounds them
     cache = load_cache()
     system = build_system(examples)
     sk = hashlib.sha1((MODEL + system).encode()).hexdigest()[:8]
@@ -481,21 +502,30 @@ def llm_label(items, examples):
     failed = set()
 
     def run(bkeys):
-        """Up to 3 attempts per batch; missing or conflicting items are retried; stops at the time/spend limits."""
+        """Up to 3 attempts per batch; missing or conflicting items are retried. Hard limits: a call is only
+        sent if its estimated cost fits in MAX_USD next to everything spent and in flight, and its timeout
+        ends before DEADLINE_S."""
         remaining = list(bkeys)
         for attempt in range(3):
-            if time.time() - START > DEADLINE_S or cost_usd() > MAX_USD:
+            left = DEADLINE_S - (time.time() - START)
+            est = reserve(len(remaining))
+            if left < 10 or est is None:
+                if est is not None:
+                    release(est)
                 print(f"stopping: limit reached (DEADLINE_S={DEADLINE_S:.0f}, MAX_USD={MAX_USD})", file=sys.stderr)
                 break
             try:
-                res = classify_batch(client, system, [todo[k] for k in remaining])
+                res = classify_batch(client.with_options(timeout=min(120.0, left - 5)), system,
+                                     [todo[k] for k in remaining])
             except (anthropic.AuthenticationError, anthropic.PermissionDeniedError,
                     anthropic.NotFoundError, anthropic.BadRequestError):
                 raise  # configuration problem: stop the whole run
             except Exception as e:
                 print(f"batch failed ({type(e).__name__}: {e}); attempt {attempt + 1}/3", file=sys.stderr)
-                time.sleep(RETRY_SLEEP * (attempt + 1))
+                time.sleep(min(RETRY_SLEEP * (attempt + 1), max(0.0, DEADLINE_S - (time.time() - START) - 10)))
                 continue
+            finally:
+                release(est)
             with _lock:
                 for i, k in enumerate(remaining):
                     if i in res:
